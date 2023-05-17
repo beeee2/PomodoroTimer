@@ -54,3 +54,8 @@ export const alarmState = atom ({
   default:'inactive',
   effects: [sessionStorageEffect('alarmState')],
 })
+export const isStartState = atom({
+  key: 'isStartState',
+  default: false,
+  effects: [sessionStorageEffect('isStartState')],
+})

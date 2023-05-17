@@ -1,7 +1,5 @@
 import { workMinuteState, restMinuteState, perLoop, alarmState} from '../atoms/atom.js';
 import {
-    useRecoilValue,
-    useSetRecoilState,
     useRecoilState
   } from 'recoil';
 const Setting = () => {
