@@ -7,6 +7,8 @@ const padNumber = (num, length) => {
     return String(num).padStart(length, '0');
 }
 
+const circle = () => {}
+
 const Timer = () => {
     const [minute, setMinuteState] = useRecoilState(workMinuteState);
     const [second, setSecondState] = useRecoilState(workSecondState);
@@ -30,7 +32,12 @@ const Timer = () => {
 
     return (
         <div>
-            {padNumber(minute, 2)}:{padNumber(second, 2)}
+            <div>
+                {padNumber(minute, 2)}:{padNumber(second, 2)}
+            </div>
+            <div>
+                <div></div>
+            </div>
         </div>
     )
 }

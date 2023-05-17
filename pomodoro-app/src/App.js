@@ -1,4 +1,5 @@
 import MainPage from "./pages/MainPage";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {
   RecoilRoot,
   atom,
@@ -6,11 +7,19 @@ import {
   useRecoilState,
   useRecoilValue
 } from 'recoil';
+import Header from "./components/Header";
+import Setting from "./components/Setting";
 
 function App() {
   return (
     <RecoilRoot>
-      <MainPage />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />}/>
+          <Route path="/setting" element={<Setting />}/>
+        </Routes>
+      </BrowserRouter>
     </RecoilRoot>
   );
 }
