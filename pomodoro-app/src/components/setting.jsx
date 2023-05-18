@@ -1,4 +1,4 @@
-import { workMinuteState, restMinuteState, perLoop, alarmState} from '../atoms/atom.js';
+import { workMinuteState, restMinuteState, perLoop, alarmState, workMinuteDisplayState, workSecondDisplayState, restMinuteDisplayState, restSecondDisplayState} from '../atoms/atom.js';
 import {
     useRecoilState
   } from 'recoil';
@@ -38,15 +38,24 @@ const Setting = () => {
 
 const useService = () => {
     const [workMinute, setWorkMinute] = useRecoilState(workMinuteState);
+    console.log(workMinute);
     const [restMinute, setRestMinute] = useRecoilState(restMinuteState);
+    const [workMinuteDisplay, setWorkMinuteDisplay] = useRecoilState(workMinuteDisplayState);
+    const [workSecondDisplay, setWorkSecondDisplay] = useRecoilState(workSecondDisplayState);
+    const [restMinuteDisplay, setRestMinuteDisplayState] = useRecoilState(restMinuteDisplayState);
+    const [restSecondDisplay, setRestSecondDisplayState] = useRecoilState(restSecondDisplayState);
     const [loop, setPerLoop] = useRecoilState(perLoop);
     const [alarm, setAlarm] = useRecoilState(alarmState);
 
     const onWorkMinuteChange = (e) => {
         setWorkMinute(e.target.value);
+        setWorkMinuteDisplay(e.target.value);
+        setWorkSecondDisplay(0);
     }
     const onRestMinuteChange = (e) => {
         setRestMinute(e.target.value);
+        setRestMinuteDisplayState(e.target.value);
+        setRestSecondDisplayState(0);
     }
     const onPerLoopChange = (e) => {
         setPerLoop(e.target.value);
