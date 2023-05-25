@@ -13,7 +13,7 @@ const Setting = () => {
             <input onChange={svc.onRestMinuteChange} value={svc.restMinute}/>
             뽀모도로 반복횟수
             <input onChange={svc.onPerLoopChange} value={svc.loop}/>
-            뽀모도로 알람 
+            {/* 뽀모도로 알람 
             <label htmlFor='inactiveAlarm'>무음</label>
             <input 
                 type="radio" 
@@ -31,7 +31,7 @@ const Setting = () => {
                 value='active'
                 checked={svc.alarm === 'active'? true : false}
                 onChange={svc.onAlarmChange}
-            />
+            /> */}
         </div>
     )
 }

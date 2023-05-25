@@ -12,8 +12,8 @@ const padNumber = (num, length) => {
 }
 
 const Circle = styled.div`
-    width:10px;
-    height:10px;
+    width:20px;
+    height:20px;
     border-radius:50%;
     background-color:#d9d9d9;
     margin-right:5px;
@@ -83,11 +83,11 @@ const Timer = () => {
     const svc = useService();
 
     return (
-        <div>
+        <div style={{display:'flex',alignItems:'center',flexDirection:'column',justifyContent:'center'}}>
             {svc.isOpenRestPopup ? 
-                <div style={{position:'fixed',left:'0', top:'0',width:'100%',height:'100%',zIndex:'2',backgroundColor:'rgba(0,0,0,0.5)'}}><RestPopup /></div>
+                <div style={{position:'fixed',left:'0', top:'0',width:'100%',height:'100%',zIndex:'2',backgroundColor:'rgba(0,0,0,0.5)',marginBottom:'10px'}}><RestPopup /></div>
                 : ''}
-            <div>
+            <div style={{fontSize:'80px',textAlign:'center', color:'#fff'}}>
                 {svc.isRestState ? 
                     <div>
                         {padNumber(svc.restMinuteDisplay, 2)}:{padNumber(svc.restSecondDisplay, 2)}
@@ -97,16 +97,34 @@ const Timer = () => {
                     </div>
                 }
             </div>
-            <div style={{display:'flex', alignItems:'center'}}>
+            <div style={{display:'flex', alignItems:'center', display:'flex',justifyContent:'center',fontSize:'20px', color:'#fff',marginBottom:'40px'}}>
                 <Circle/>
-                <div>{svc.loop}회</div>
+                <div style={{marginLeft:'5px'}}>{svc.loop}회</div>
             </div>
-            <div>
+            <div style={{width:'400px',fontSize:'24px', color:'#fff', lineHeight:'1.5', marginBottom:'60px',textAlign:'center'}}>
                 {svc.saying}
             </div>
-            <div>
-                {svc.isRestState ? '': <Button variant="contained" onClick={() => svc.setIsStart(false)}>일시정지</Button>}
+            <div style={{display:'flex', justifyContent:'space-between', width:'260px'}}>
+                {svc.isRestState ? 
+                '': 
+                <Button sx={{
+                        ':hover': {
+                            borderColor:'#fff'
+                        },
+                        color:'#fff',
+                        borderColor:'#fff'
+                    }}
+                    variant="outlined" 
+                    onClick={() => svc.setIsStart(false)}
+                >일시정지</Button>}
                 <Button variant="outlined"
+                    sx={{
+                        ':hover': {
+                            borderColor:'#fff'
+                        },
+                        color:'#fff',
+                        borderColor:'#fff'
+                    }}
                     onClick={() => {
                         svc.setMinuteState(0);
                         svc.setSecondState(0);
@@ -118,7 +136,19 @@ const Timer = () => {
                         svc.setRestSecondDisplayState(0);
                     }}
                 >초기화</Button>
-                {svc.isRestState ? '': <Button variant="contained" onClick={() => svc.setIsStart(true)}>시작하기</Button>}
+                {svc.isRestState ? 
+                '': 
+                <Button 
+                    variant="contained" 
+                    onClick={() => svc.setIsStart(true)}
+                    sx={{
+                        ':hover': {
+                            backgroundColor:'#fff'
+                        },
+                        backgroundColor:'#fff',
+                        color:'rgb(0, 30, 60)'
+                    }}
+                >시작하기</Button>}
             </div>
         </div>
     )
@@ -163,6 +193,18 @@ export const useService = () => {
             return () => {clearInterval(countdown);}
         }
     }, [isStart, workSecondDisplay]);
+
+    const [countdown, setCountdown] = useState(null);
+    useEffect(()=>{
+        
+        setCountdown(setInterval(() => {
+                if (workSecondDisplay > 0) {
+                    setWorkSecondDisplay(workSecondDisplay - 1);
+                }
+                
+            }, 1000))
+
+    }, [isStart]);
 
     useEffect(()=>{
         if(isRestState) {

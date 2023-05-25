@@ -7,8 +7,8 @@ const TimerDisplay = () => {
     const svc = useService();
 
     return (
-        <div>
-            <div style={{ background: `conic-gradient(#f44 0% ${svc.percent}%, #f2f2f2 100% 100%)`,width:'500px',height:'500px',borderRadius:'50%' }} className="graph"></div>
+        <div style={{marginRight:'40px'}}>
+            <div style={{ background: `conic-gradient(#f44 0% ${svc.percent}%, #fff 100% 100%)`,width:'400px',height:'400px',borderRadius:'50%' }} className="graph"></div>
         </div>
     )
 }

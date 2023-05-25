@@ -68,7 +68,7 @@ export const restSecondDisplayState = atom({
 
 export const perLoop = atom({
     key: 'perLoopState',
-    default: 0,
+    default: 1,
     effects: [sessionStorageEffect('perLoopState')],
 });
 export const alarmState = atom ({

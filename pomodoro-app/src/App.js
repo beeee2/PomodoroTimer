@@ -14,11 +14,13 @@ function App() {
   return (
     <RecoilRoot>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<MainPage />}/>
-          <Route path="/setting" element={<Setting />}/>
-        </Routes>
+        <div style={{backgroundColor:'rgb(0,30,60)', width:'100%', height:'100vh'}}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<MainPage />}/>
+            <Route path="/setting" element={<Setting />}/>
+          </Routes>
+        </div>
       </BrowserRouter>
     </RecoilRoot>
   );

@@ -3,7 +3,7 @@ import Timer from '../components/Timer';
 
 const MainPage = () => {
     return (
-        <div>
+        <div style={{display:'flex',alignItems:'center', justifyContent:'center'}}>
             <TimerDisplay />
             <Timer />
         </div>

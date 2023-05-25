@@ -6,9 +6,9 @@ const Header = () => {
     const svc = useService();
 
     return (
-        <div>
-            <HomeIcon style={{cursor:'pointer'}} onClick={() => svc.navi(`/`)}/>
-            <SettingsIcon style={{cursor:'pointer'}} onClick={() => svc.navi(`/setting`)}/>
+        <div style={{padding:'40px'}}>
+            <HomeIcon style={{cursor:'pointer', color:'#fff', marginRight:'10px'}} onClick={() => svc.navi(`/`)}/>
+            <SettingsIcon style={{cursor:'pointer', color:'#fff'}} onClick={() => svc.navi(`/setting`)}/>
         </div>
     )
 }
